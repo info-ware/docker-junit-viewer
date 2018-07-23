@@ -1,0 +1,6 @@
+{
+    "dependencies": {
+        "express": "4.16.3",
+        "junit-viewer": "4.11.1"
+    }
+}

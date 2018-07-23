@@ -9,7 +9,7 @@ var jv = require('junit-viewer')
 const testPath = '/routing_server_tests/'
 
 app.get('/', function (req, res) {
-    const piplineNum = req.param('PIPE');
+    const piplineNum = req.param('PIPELINE');
 
     exec(`mkdir ${testPath}${piplineNum}`)
     exec(`junit-viewer --results=${testPath}routing_server_test_${piplineNum}.xml --save=${testPath}${piplineNum}/routing_server_test.html`, (err, stdout, stderr) => {

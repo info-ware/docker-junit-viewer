@@ -12,12 +12,12 @@ app.get('/', function (req, res) {
     var testName = ''
     if (piplineJob == 'API') 
     {
-        testPath = '/api_tests/'
+        testPath = '/all_tests/api_tests/'
         testName = 'api_test'
     }
     else
     {
-        testPath = '/routing_server_tests/'
+        testPath = '/all_tests/routing_server_tests/'
         testName = 'routing_server_test'
     }
 

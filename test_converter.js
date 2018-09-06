@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
 
     var testPath = '';
     var testName = '';
-    if (piplineJob == 'API') 
+    if (piplineJob == 'API')
     {
         testPath = '/all_tests/api_test/';
         testName = 'api_test';
@@ -22,13 +22,13 @@ app.get('/', function (req, res) {
     }
 
     exec(`mkdir ${testPath}${piplineNum}`);
-    console.log(`Executing command: junit-viewer --results=${testPath}${testName}_${piplineNum}.xml 2> ${testPath}${piplineNum}/${testName}.html`)
-    exec(`junit-viewer --results=${testPath}${testName}_${piplineNum}.xml 2> ${testPath}${piplineNum}/${testName}.html`, (err, stdout, stderr) => {
-        if (err) {
-            console.log('Juni-viewer failed to generate the test results html.')
-            // node couldn't execute the command
-            return;
-        }
+    console.log(`junit-viewer --results=${testPath}${testName}_${piplineNum}.xml --save=${testPath}${piplineNum}/${testName}.html`);
+    exec(`junit-viewer --results=${testPath}${testName}_${piplineNum}.xml --save=${testPath}${piplineNum}/${testName}.html`, (err, stdout, stderr) => {
+        //if (err) {
+        //    console.log('Juni-viewer failed to generate the test results html.')
+        //    // node couldn't execute the command
+        //    return;
+        //}
 
         // the *entire* stdout and stderr (buffered)
         console.log(`stdout: ${stdout}`);
@@ -36,5 +36,5 @@ app.get('/', function (req, res) {
         res.sendFile(`${testPath}${piplineNum}/${testName}.html`)
     });
 })
- 
+
 app.listen(8080)

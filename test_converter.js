@@ -22,8 +22,9 @@ app.get('/', function (req, res) {
     }
 
     exec(`mkdir ${testPath}${piplineNum}`);
-    exec(`junit-viewer --results=${testPath}${testName}_${piplineNum}.xml --save=${testPath}${piplineNum}/${testName}.html`, (err, stdout, stderr) => {
+    exec(`junit-viewer --results=${testPath}${testName}_${piplineNum}.xml 2> ${testPath}${piplineNum}/${testName}.html`, (err, stdout, stderr) => {
         if (err) {
+            console.log('Juni-viewer failed to generate the test results html.')
             // node couldn't execute the command
             return;
         }
